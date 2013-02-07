@@ -67,7 +67,8 @@ class AuthException(AAAException):
 class JsonBackend(object):
 
     def __init__(self, directory, users_fname='users',
-            roles_fname='roles', pending_reg_fname='register', initialize=False):
+            roles_fname='roles', pending_reg_fname='register',
+            initialize=False):
         """Data storage class. Handles JSON files
 
         :param users_fname: users file name (without .json)
@@ -95,7 +96,7 @@ class JsonBackend(object):
     def _initialize_storage(self):
         """Create empty JSON files"""
         self._savejson(self._users_fname, {})
-        self._savejson(self._roles_fname, {})
+        self._savejson(self._roles_fname, {'user': 50, 'admin': 100})
         self._savejson(self._pending_reg_fname, {})
 
     def _refresh(self):
